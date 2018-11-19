@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fms.service.filemanage.FileInputService">
+
+    <sql id="cols">
+        id,
+        ip,
+        userName,
+        password,
+        port,
+        path
+    </sql>
+
+
+    <insert id="addFileInput" parameterType="com.fms.domain.filemanage.FileInput" >
+        INSERT INTO t_fileInput(ip,userName,password,port,path)
+        VALUES (
+        #{ip},
+        #{userName},
+        #{password},
+        #{port},
+        #{path}
+        )
+    </insert>
+
+    <update id="updateFileInput" parameterType="com.fms.domain.filemanage.FileInput">
+        UPDATE t_fileInput
+        SET
+        ip = #{ip},
+        userName = #{userName},
+        password = #{password},
+        port = #{port},
+        path = #{path}
+        <where>
+            <if test="id != null">
+                and id = #{id}
+            </if>
+        </where>
+    </update>
+
+    <select id="getFileInput" parameterType="long" resultType="com.fms.domain.filemanage.FileInput">
+        SELECT <include refid="cols" />
+        FROM t_fileInput
+        where id=#{id}
+    </select>
+
+
+    <select id="getFileInputById" parameterType="long" resultType="com.fms.domain.filemanage.FileInput">
+        SELECT <include refid="cols" />
+        FROM t_fileInput
+        where id=#{id}
+    </select>
+
+
+    <delete id="deleteFileInput" parameterType="long">
+        DELETE FROM t_fileInput
+        WHERE id = #{id}
+    </delete>
+
+    <select id="getFileInputList" parameterType="map" resultType="com.fms.domain.filemanage.FileInput">
+        SELECT <include refid="cols" />
+        FROM t_fileInput
+    </select>
+
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fms.service.filemanage.NetPropertyService">
+
+    <sql id="all">
+        id,
+        name;
+        fontsize;
+	    textcolor;
+	    background;
+	    labelPosition;
+	    labelAnchorPosition;
+	    size;
+	    location;
+	    rotate;
+        border;
+	    borderColor;
+	    parentId;
+	    controlId;
+        pictureId;
+        controlName;
+	    styles;
+	    image;
+        from;
+	    to;
+        classname;
+        refId
+    </sql>
+
+    <insert id="add" parameterType="com.fms.domain.filemanage.NetProperty" >
+        INSERT INTO t_net_property
+        VALUES (
+        #{name},
+        #{fontsize},
+        #{textcolor}
+        )
+    </insert>
+
+
+</mapper>
